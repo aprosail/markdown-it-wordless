@@ -1,0 +1,6 @@
+{
+  "name": "markdown-it-wordless",
+  "description": "A markdown-it plugin for wordless languages optimization.",
+  "version": "0.0.0",
+  "type": "module"
+}
