@@ -3,6 +3,13 @@
   "description": "A markdown-it plugin for wordless languages optimization.",
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
   "scripts": {
     "format": "prettier . --write",
     "build": "rollup --config rollup.config.js"
