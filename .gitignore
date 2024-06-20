@@ -5,6 +5,13 @@ package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
+# Compilation output files.
+index.cjs.map
+index.js.map
+index.d.ts
+index.cjs
+index.js
+
 # Platform specified files.
 .DS_Store
 
