@@ -1,0 +1,13 @@
+# Specify EOL normalization on different platform.
+#
+# When saving with different EOL (End of Line Sign),
+# There might be conflict when merging and such characters
+# are usually invisible for common code editor settings.
+#
+# Unix-like systems including macOS and Linux uses LF as EOL,
+# while Windows uses CRLF as EOL by default.
+#
+# https://git-scm.com/docs/gitattributes#_text
+# https://git-scm.com/docs/gitattributes#_eol
+# https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes
+* text=auto eol=lf

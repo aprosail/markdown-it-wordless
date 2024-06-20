@@ -1,0 +1,19 @@
+# Node dependencies and lockfile.
+# The lockfile is ignore for potential usage of mirrors.
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Platform specified files.
+.DS_Store
+
+# Code editor setting files.
+.atom/
+.idea/
+.fleet/
+*.iml
+*.ipr
+*.iws
+*.sln
+*.swp
