@@ -80,7 +80,7 @@ export const commonWords: LanguageRanges = [[0x0000, 0x0dff]]
 export const emoji: LanguageRanges = [[0x1f000, 0x1fbff]]
 
 /**
- * Chinese and Japanese characters.
+ * Chinese and Japanese characters (中文和日文/日本語と中国語).
  *
  * ## Special: about CJK
  *
@@ -127,3 +127,65 @@ export const chineseAndJapanese: LanguageRanges = [
   [0x2f800, 0x2fa1f], // 兼容汉字扩展/コンパチブル漢字の拡張
   [0x30000, 0x323af], // 汉字扩展G~H/漢字の拡張G~H
 ]
+
+/** Tibetan(བོད་སྐད།/藏语) */
+export const tibetan: LanguageRanges = [[0x0f00, 0x0fff]]
+
+/** Thai(ภาษาไทย) */
+export const thai: LanguageRanges = [[0x0e00, 0x0e7f]]
+
+/** Lao(ພາສາລາວ) */
+export const lao: LanguageRanges = [[0x0e80, 0x0eff]]
+
+/** Cambodian(ខ្មែរ) */
+export const cambodian: LanguageRanges = [
+  [0x1780, 0x17ff],
+  [0x19e0, 0x19ff],
+]
+
+/** Burmese(မြန်မာအက္ခရာ) */
+export const burmese: LanguageRanges = [
+  [0x1000, 0x109f],
+  [0xa9e0, 0xa9ff],
+  [0xaa60, 0xaa7f],
+]
+
+/** 彝文 */
+export const yi: LanguageRanges = [[0x1a000, 0xa4cf]]
+
+/** 德宏傣文 */
+export const dehongDai: LanguageRanges = [[0x1950, 0x197f]]
+
+/** 西双版纳新傣文 */
+export const xishuangbannaNewDai: LanguageRanges = [[0x1e00, 0x1eff]]
+
+/** 西双版纳老傣文 */
+export const xishuangbannaOldDai: LanguageRanges = [[0x1a20, 0x1aaf]]
+
+/** 江永女书 */
+export const jiangyongWomanScript: LanguageRanges = [[0x1b170, 0x1b2ff]]
+
+/** 旧版拼音 */
+export const oldChinesePinyin: LanguageRanges = [
+  [0x3100, 0x312f],
+  [0x31a0, 0x31bf],
+]
+
+/** 契丹小字 */
+export const khitanSmallScript: LanguageRanges = [[0x18b00, 0x18cff]]
+
+/** 西夏文 */
+export const tangut: LanguageRanges = [
+  [0x17000, 0x18aff],
+  [0x18d00, 0x18d7f],
+]
+
+/** Mesopotamia cuneiform script. */
+export const cuneiform: LanguageRanges = [
+  [0x12000, 0x123ff],
+  [0x12400, 0x1247f],
+  [0x12480, 0x1254f],
+]
+
+/** Ancient Egyptian hieroglyphs. */
+export const hieroglyphics: LanguageRanges = [[0x13000, 0x1345f]]
