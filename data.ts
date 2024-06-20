@@ -40,7 +40,10 @@ export type Options = {
  * and it will return -1. And if it's an emoji, it will return -2.
  */
 export function langIndexOf(code: number, options?: Options): number {
-  options = this || {optimizeWords: [commonWords], supportWordless: []}
+  options = {
+    optimizeWords: options?.optimizeWords ?? [commonWords],
+    supportWordless: options?.supportWordless ?? [],
+  }
 
   // Process optimizations.
   for (const ranges of options!.optimizeWords!) {
