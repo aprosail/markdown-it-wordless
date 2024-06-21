@@ -11,10 +11,10 @@ export type LanguageRanges = NonEmptyArray<Range>
  * The default value is empty, you need to add it manually.
  * Parsing wordless languages costs a lot.
  * It's strongly recommended to only introduce the required series.
- *
+ * For example:
  * ```ts
- * import {wordless, chineseAndJapanese} from 'markdown-it-wordless'
- * md.use(wordless, {supportWordless: [chineseAndJapanese]})
+ * import {wordless, chineseAndJapanese, Options} from 'markdown-it-wordless'
+ * md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
  * ```
  */
 export type Options = {

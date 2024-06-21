@@ -17,8 +17,8 @@ const space = " "
  * For example, if you are using Chinese or Japanese with English,
  * you may consider code like this:
  * ```ts
- * import {wordless, chineseAndJapanese} from 'markdown-it-wordless'
- * md.use(wordless, {supportWordless: [chineseAndJapanese]})
+ * import {wordless, chineseAndJapanese, Options} from 'markdown-it-wordless'
+ * md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
  * ```
  */
 export function wordless(md: md, options?: Options) {
