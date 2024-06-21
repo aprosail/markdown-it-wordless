@@ -1,0 +1,23 @@
+# Node dependencies and lockfile.
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Repo config files.
+.gitattributes
+.prettierrc.yaml
+rollup.config.js
+
+# Platform specified files.
+.DS_Store
+
+# Code editor setting files.
+.atom/
+.idea/
+.fleet/
+*.iml
+*.ipr
+*.iws
+*.sln
+*.swp
