@@ -12,8 +12,10 @@
     }
   },
   "scripts": {
+    "format.check": "prettier . --check",
     "format": "prettier . --write",
-    "build": "rollup --config rollup.config.js"
+    "build": "rollup --config rollup.config.js",
+    "review": "npm run format.check && npm run build"
   },
   "dependencies": {
     "markdown-it": "^14.1.0"
