@@ -5,6 +5,7 @@ pnpm-lock.yaml
 yarn.lock
 
 # Repo config files.
+.github/
 .gitattributes
 .prettierrc.yaml
 rollup.config.js
