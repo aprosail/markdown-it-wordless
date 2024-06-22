@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v4
       - run: npm install
       - run: npm run review
-      - run: npm login
+
+      # The --legacy-peer-deps is needed because of compatibility reasons.
+      - run: npm login --legacy-peer-deps
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm publish
