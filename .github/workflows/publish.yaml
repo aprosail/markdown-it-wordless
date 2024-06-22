@@ -16,7 +16,5 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm run review
-      - run: npm login
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm login --registry https://registry.npmjs.org
       - run: npm publish
