@@ -11,10 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: {registry-url: "https://registry.npmjs.org"}
       - run: npm install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm run review
-      - run: npm login --registry https://registry.npmjs.org
+      - run: npm login
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm publish
