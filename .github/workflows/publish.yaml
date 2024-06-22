@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v4
       - run: npm install
       - run: npm run review
-      - run: npm publish
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
