@@ -5,9 +5,9 @@
 但 Markdown 在渲染时会默认将换行渲染为空格，
 而这样的空格在中文这种不用空格分割词汇的语言中显然是不合适的。
 
-```ts
+```ts:line-numbers
 import md from "markdown-it"
-md.renderer.rules.softbreak = () => ""
+md.renderer.rules.softbreak = () => "" // [!code focus]
 ```
 
 在使用 [markdown-it](https://markdown-it.github.io) 时，
@@ -22,8 +22,8 @@ md.renderer.rules.softbreak = () => ""
 使用这个插件后，使用 Markdown 编辑中文这样的语言时，
 就可以随意的换行来而不必担心句子里被添加不美观的空格的问题了。
 
-```ts
+```ts:line-numbers
 import md from "markdown-it"
 import {Options} from "markdown-it-wordless"
-md.use(wordless)
+md.use(wordless) // [!code focus]
 ```
