@@ -1,5 +1,9 @@
 # Markdown-it Wordless
 
+Documentation in:
+[English](https://treeinfra.github.io/markdown-it-wordless/) |
+[简体中文](https://treeinfra.github.io/markdown-it-wordless/zh/)
+
 A [markdown-it](https://markdown-it.github.io) plugin
 to optimize wordless multi-language line-break render.
 
