@@ -1,10 +1,18 @@
 /** Ensure an array is not empty. */
 type NonEmptyArray<T> = [T, ...T[]]
 
-/** A range of unicode numbers, mark its begin and end, the end is included. */
+/**
+ * A range of unicode numbers,
+ * mark its begin and end.
+ * The end is included (using `<=` rather than `<` in source code).
+ */
 export type Range = [number, number]
 
-/** Unicode {@link Range}s of a single language. */
+/**
+ * Unicode {@link Range}s of a single language.
+ * It is a non-empty array of {@link Range}
+ * because a single language might contains multiple ranges in unicode.
+ */
 export type LanguageRanges = NonEmptyArray<Range>
 
 /**

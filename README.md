@@ -63,3 +63,30 @@ export default defineConfig({
   // Other configs...
 })
 ```
+
+## Customize to optimize performance
+
+The default option will enable optimization
+for all registered wordless languages inside this package.
+If you want to optimize performance,
+you can specify what exactly wordless language you are using.
+You may also specify what wordful language you are using,
+because there's only optimization for wordful languages
+which unicode is less than `0x0dff`.
+
+Here's a simple example
+if you will only use Chinese or Japanese as wordless languages:
+
+```ts
+import md from "markdown-it"
+import {wordless, chineseAndJapanese, Options} from "markdown-it-wordless"
+md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
+```
+
+Such optimization is unnecessary in most cases,
+because this plugin will not slow down the rendering process a lot
+in common cases (only a few milliseconds).
+And if you do want to customize,
+please make sure you've understand the source code.
+Please refer to [`data.ts`](./data.ts) for more details,
+and here's documentation for each item in details.
