@@ -8,6 +8,7 @@ export default defineConfig({
     },
   },
   title: "Markdown-it Wordless",
+  base: "./",
   themeConfig: {
     socialLinks: [
       {
