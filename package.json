@@ -30,8 +30,8 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "doc": "vitepress dev",
-    "doc.build": "npm run build && vitepress build",
+    "doc": "vitepress dev docs",
+    "doc.build": "npm run build && vitepress build docs",
     "format": "prettier . --write",
     "format.check": "prettier . --check",
     "prepublishOnly": "npm run review",
