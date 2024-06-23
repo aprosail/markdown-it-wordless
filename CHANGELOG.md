@@ -1,7 +1,7 @@
 ## v0.1.1
 
 - Add MIT License to node manifest.
-- GitHub Actions for check and publish.
+- GitHub Actions for check.
 - Readme manifest details.
 
 ## v0.1.0
