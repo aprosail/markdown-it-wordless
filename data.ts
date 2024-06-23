@@ -237,7 +237,9 @@ export function langIndexOf(code: number, options?: Options): number {
 if (import.meta.vitest) {
   const {expect, test} = import.meta.vitest
 
-  test("basic function", function () {
+  test("zh,ja punctuations", function () {
     expect(langIndexOf("，".charCodeAt(0))).toBe(-3)
+    expect(langIndexOf("。".charCodeAt(0))).toBe(-3)
+    expect(langIndexOf("、".charCodeAt(0))).toBe(-3)
   })
 }
