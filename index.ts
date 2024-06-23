@@ -1,4 +1,5 @@
 import md from "markdown-it"
+import {describe, expect, test} from "vitest"
 
 import type {Options} from "./data"
 import {langIndexOf} from "./data"
@@ -30,4 +31,13 @@ export function wordless(md: md, options?: Options) {
     const after = langIndexOf(suffix.charCodeAt(0), options)
     return before === after && before !== -1 && before != -2 ? "" : space
   }
+}
+
+// @ts-ignore
+if (import.meta.vitest) {
+  describe("validate", function () {
+    test("placeholder", function () {
+      expect(1 + 1).toBe(2)
+    })
+  })
 }
