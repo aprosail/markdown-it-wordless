@@ -1,17 +1,30 @@
 /** Ensure an array is not empty. */
 type NonEmptyArray<T> = [T, ...T[]]
 
-/** A range of unicode numbers, mark its begin and end, the end is included. */
+/**
+ * A range of unicode numbers,
+ * mark its begin and end.
+ * The end is included (using `<=` rather than `<` in source code).
+ */
 export type Range = [number, number]
 
-/** Unicode {@link Range}s of a single language. */
+/**
+ * Unicode {@link Range}s of a single language.
+ * It is a non-empty array of {@link Range}
+ * because a single language might contains multiple ranges in unicode.
+ */
 export type LanguageRanges = NonEmptyArray<Range>
 
 /**
- * The default value is empty, you need to add it manually.
- * Parsing wordless languages costs a lot.
- * It's strongly recommended to only introduce the required series.
- * For example:
+ * The default value will enable all languages registered inside
+ * the {@link allWordless} const, and enable optimization for
+ * {@link commonWords} by default.
+ *
+ * If you'd like to customize the support languages to improve performance,
+ * you can config like the following example:
+ * The following example only enables wordless languages optimization
+ * for Chinese and Japanese, all other wordless languages will be omitted.
+ *
  * ```ts
  * import {wordless, chineseAndJapanese, Options} from 'markdown-it-wordless'
  * md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
@@ -28,46 +41,6 @@ export type Options = {
    */
   optimizeWords?: LanguageRanges[]
   supportWordless: LanguageRanges[]
-}
-
-/**
- * @param code unicode number of a character.
- * @param options {@link Options} for the wordless languages and
- * a series of non-wordless languages for optimization.
- * @returns Index of the character in the given wordless language series,
- * if there's not {@link Range} contains such code,
- * it means this is not a character of a wordless language,
- * and it will return -1. And if it's an emoji, it will return -2.
- */
-export function langIndexOf(code: number, options?: Options): number {
-  options = {
-    optimizeWords: options?.optimizeWords ?? [commonWords],
-    supportWordless: options?.supportWordless ?? [],
-  }
-
-  // Process optimizations.
-  for (const ranges of options!.optimizeWords!) {
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return -1
-    }
-  }
-
-  // Process Emoji.
-  for (const ranges of emoji) {
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return -2
-    }
-  }
-
-  // Process wordless language index.
-  const wordless = options!.supportWordless!
-  for (let index = 0; index < wordless.length; index++) {
-    const ranges = wordless[index]
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return index
-    }
-  }
-  return -1
 }
 
 /** Unicode from zero to 0x0dff, commonly used language with words. */
@@ -104,7 +77,9 @@ export const chineseAndJapanese: LanguageRanges = [
   // [0x3040, 0x309f], // 日文平假名/平仮名ひらがな
   // [0x30a0, 0x30ff], // 日文片假名/片仮名カタカナ
   [0x3040, 0x30ff],
+  [0x3100, 0x312f], // 传统拼音注音符号(ㄆㄧㄣ ㄧㄣ)
   [0x3190, 0x319f], // 甲乙丙丁天地人...
+  [0x31a0, 0x31bf], // 传统拼音注音字母(ㄆㄧㄣ ㄧㄣ)
 
   // [0x31c0, 0x31ef], // 笔画/筆画
   // [0x31f0, 0x31ff], // 日文片假名扩展/片仮名カタカナの拡張
@@ -168,12 +143,6 @@ export const xishuangbannaOldDai: LanguageRanges = [[0x1a20, 0x1aaf]]
 /** 江永女书 */
 export const jiangyongWomanScript: LanguageRanges = [[0x1b170, 0x1b2ff]]
 
-/** 旧版拼音 */
-export const oldChinesePinyin: LanguageRanges = [
-  [0x3100, 0x312f],
-  [0x31a0, 0x31bf],
-]
-
 /** 契丹小字 */
 export const khitanSmallScript: LanguageRanges = [[0x18b00, 0x18cff]]
 
@@ -192,3 +161,62 @@ export const cuneiform: LanguageRanges = [
 
 /** Ancient Egyptian hieroglyphs. */
 export const hieroglyphics: LanguageRanges = [[0x13000, 0x1345f]]
+
+/** Enable optimization for all registered wordless languages. */
+export const allWordless: LanguageRanges[] = [
+  chineseAndJapanese,
+  tibetan,
+  thai,
+  lao,
+  cambodian,
+  burmese,
+  yi,
+  dehongDai,
+  xishuangbannaNewDai,
+  xishuangbannaOldDai,
+  jiangyongWomanScript,
+  khitanSmallScript,
+  tangut,
+  cuneiform,
+  hieroglyphics,
+]
+
+/**
+ * @param code unicode number of a character.
+ * @param options {@link Options} for the wordless languages and
+ * a series of non-wordless languages for optimization.
+ * @returns Index of the character in the given wordless language series,
+ * if there's not {@link Range} contains such code,
+ * it means this is not a character of a wordless language,
+ * and it will return -1. And if it's an emoji, it will return -2.
+ */
+export function langIndexOf(code: number, options?: Options): number {
+  options = {
+    optimizeWords: options?.optimizeWords ?? [commonWords],
+    supportWordless: options?.supportWordless ?? allWordless,
+  }
+
+  // Process optimizations.
+  for (const ranges of options!.optimizeWords!) {
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return -1
+    }
+  }
+
+  // Process Emoji.
+  for (const ranges of emoji) {
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return -2
+    }
+  }
+
+  // Process wordless language index.
+  const wordless = options!.supportWordless!
+  for (let index = 0; index < wordless.length; index++) {
+    const ranges = wordless[index]
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return index
+    }
+  }
+  return -1
+}

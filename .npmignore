@@ -9,6 +9,7 @@ yarn.lock
 .gitattributes
 .prettierrc.yaml
 rollup.config.js
+vitest.config.ts
 
 # Platform specified files.
 .DS_Store
