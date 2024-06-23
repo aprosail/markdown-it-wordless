@@ -1,5 +1,5 @@
 import {defineConfig} from "vitepress"
-import {wordless} from "../index"
+import {wordless} from "../../index"
 
 export default defineConfig({
   markdown: {
@@ -8,7 +8,7 @@ export default defineConfig({
     },
   },
   title: "Markdown-it Wordless",
-  base: "./",
+  base: "/docs",
   themeConfig: {
     socialLinks: [
       {
@@ -18,11 +18,11 @@ export default defineConfig({
     ],
   },
   locales: {
-    root: {label: "English", lang: "en", link: "/docs"},
+    root: {label: "English", lang: "en"},
     zh: {
       label: "简体中文",
       lang: "zh",
-      link: "/docs/zh",
+      link: "/zh",
       themeConfig: {
         outline: {label: "目录"},
       },

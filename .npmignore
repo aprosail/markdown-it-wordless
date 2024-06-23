@@ -6,7 +6,6 @@ yarn.lock
 
 # Repo config files.
 .github/
-.vitepress/
 .vscode/
 docs/
 .gitattributes
