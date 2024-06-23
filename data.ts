@@ -47,13 +47,22 @@ export type Options = {
 export const commonWords: LanguageRanges = [[0x0000, 0x0dff]]
 
 /**
- * Emoji is special ones:
- * Soft spaces between emojis will be kept,
- * while it won't add spaces between emojis and wordless languages.
- * And as it's special, the process of emoji is build-in,
- * and you should not include it inside the {@link Options}.
+ * Emoji is special:
+ * 1. Once line break between it and a wordful language, there will be space.
+ * 2. If line break between it and a wordless language, there won't be space.
  */
 export const emoji: LanguageRanges = [[0x1f000, 0x1fbff]]
+
+/**
+ * Chinese and Japanese punctuations (中文和日文标点/日本語と中国語の標点):
+ * Never add spaces beside such punctuations.
+ */
+export const chineseAndJapanesePunctuations: LanguageRanges = [
+  [0x3000, 0x303f], // 基本标点/基本標点
+  [0xfe10, 0xfe1f], // 竖排标点/縦書き標点
+  [0xfe30, 0xfe4f], // 竖排标点扩展/縦書き記号の拡張
+  [0xff00, 0xffef], // 全角标点/全角標点
+]
 
 /**
  * Chinese and Japanese characters (中文和日文/日本語と中国語).
@@ -77,6 +86,7 @@ export const chineseAndJapanese: LanguageRanges = [
   // [0x3040, 0x309f], // 日文平假名/平仮名ひらがな
   // [0x30a0, 0x30ff], // 日文片假名/片仮名カタカナ
   [0x3040, 0x30ff],
+
   [0x3100, 0x312f], // 传统拼音注音符号(ㄆㄧㄣ ㄧㄣ)
   [0x3190, 0x319f], // 甲乙丙丁天地人...
   [0x31a0, 0x31bf], // 传统拼音注音字母(ㄆㄧㄣ ㄧㄣ)
@@ -91,9 +101,6 @@ export const chineseAndJapanese: LanguageRanges = [
   [0x31c0, 0x9fff],
 
   [0xf900, 0xfaff], // 兼容汉字/コンパチブル漢字の拡張
-  [0xfe10, 0xfe1f], // 竖排标点/縦書き記号
-  [0xfe30, 0xfe4f], // 竖排标点扩展/縦書き記号の拡張
-  [0xff00, 0xffef], // 全角符号/全角記号
   [0x1aff0, 0x1b16f], // 日文假名扩展/仮名の拡張
 
   // [0x1d300, 0x1d35f], // 太玄经符号/太玄經の記号
@@ -188,7 +195,10 @@ export const allWordless: LanguageRanges[] = [
  * @returns Index of the character in the given wordless language series,
  * if there's not {@link Range} contains such code,
  * it means this is not a character of a wordless language,
- * and it will return -1. And if it's an emoji, it will return -2.
+ * and it will return -1.
+ *
+ * There are also resolver for special conditions: emoji will return -2,
+ * and punctuations of Chinese and Japanese will return -3.
  */
 export function langIndexOf(code: number, options?: Options): number {
   options = {
@@ -203,11 +213,14 @@ export function langIndexOf(code: number, options?: Options): number {
     }
   }
 
+  // Process Chinese and Japanese punctuations.
+  for (const range of chineseAndJapanesePunctuations) {
+    if (code >= range[0] && code <= range[1]) return -3
+  }
+
   // Process Emoji.
-  for (const ranges of emoji) {
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return -2
-    }
+  for (const range of emoji) {
+    if (code >= range[0] && code <= range[1]) return -2
   }
 
   // Process wordless language index.
@@ -219,4 +232,12 @@ export function langIndexOf(code: number, options?: Options): number {
     }
   }
   return -1
+}
+
+if (import.meta.vitest) {
+  const {expect, test} = import.meta.vitest
+
+  test("basic function", function () {
+    expect(langIndexOf("，".charCodeAt(0))).toBe(-3)
+  })
 }

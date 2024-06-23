@@ -11,6 +11,8 @@ index.js.map
 index.d.ts
 index.cjs
 index.js
+.vitepress/cache/
+.vitepress/dist/
 
 # Platform specified files.
 .DS_Store
