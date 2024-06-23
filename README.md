@@ -22,7 +22,6 @@ you can enable the softbreak for English but disable it for Chinese
 by following configurations:
 
 ```ts
-import {Options, chineseAndJapanese, wordless} from "markdown-it-wordless"
-
-md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
+import {Options} from "markdown-it-wordless"
+md.use(wordless)
 ```
