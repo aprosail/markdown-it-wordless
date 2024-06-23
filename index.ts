@@ -1,4 +1,5 @@
 import md from "markdown-it"
+import MarkdownIt from "markdown-it/index.mjs"
 import {expect, test} from "vitest"
 
 import type {Options} from "./data"
@@ -35,7 +36,10 @@ export function wordless(md: md, options?: Options) {
 
 // @ts-ignore
 if (import.meta.vitest) {
-  test("placeholder", function () {
-    expect(1 + 1).toBe(2)
+  test("basic function", function () {
+    const raw = "English\nにほんご\n中文\nབོད་ཡིག།"
+    expect(new MarkdownIt().use(wordless).render(raw)).toBe(
+      "<p>English にほんご中文 བོད་ཡིག།</p>\n",
+    )
   })
 }
