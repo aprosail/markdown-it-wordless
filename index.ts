@@ -1,5 +1,5 @@
 import md from "markdown-it"
-import {describe, expect, test} from "vitest"
+import {expect, test} from "vitest"
 
 import type {Options} from "./data"
 import {langIndexOf} from "./data"
@@ -35,9 +35,7 @@ export function wordless(md: md, options?: Options) {
 
 // @ts-ignore
 if (import.meta.vitest) {
-  describe("validate", function () {
-    test("placeholder", function () {
-      expect(1 + 1).toBe(2)
-    })
+  test("placeholder", function () {
+    expect(1 + 1).toBe(2)
   })
 }
