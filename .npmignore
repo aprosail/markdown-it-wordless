@@ -6,6 +6,7 @@ yarn.lock
 
 # Repo config files.
 .github/
+.vitepress/
 docs/
 .gitattributes
 .prettierrc.yaml

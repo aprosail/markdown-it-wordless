@@ -26,8 +26,8 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "doc": "cd docs && npm run dev && cd ..",
-    "doc.build": "cd docs && npm run build && cd ..",
+    "doc": "vitepress dev",
+    "doc.build": "vitepress build",
     "format": "prettier . --write",
     "format.check": "prettier . --check",
     "prepublishOnly": "npm run review",
@@ -47,6 +47,7 @@
     "rollup-plugin-dts": "^6.1.1",
     "tslib": "^2.6.3",
     "typescript": "^5.5.2",
+    "vitepress": "^1.2.3",
     "vitest": "^1.6.0"
   }
 }
