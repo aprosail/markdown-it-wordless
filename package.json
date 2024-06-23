@@ -4,6 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "keywords": [
+    "wordless",
+    "line-break",
+    "markdown",
+    "markdown-it",
+    "vitepress"
+  ],
   "homepage": "https://github.com/treeinfra/markdown-it-wordless",
   "author": {
     "name": "James Aprosail",
