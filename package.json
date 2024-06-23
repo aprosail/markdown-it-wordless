@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-wordless",
-  "description": "A markdown-it plugin for wordless languages optimization.",
+  "description": "A markdown-it plugin for wordless languages line-break.",
   "version": "0.2.0",
   "type": "module",
   "license": "MIT",
