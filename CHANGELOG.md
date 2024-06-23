@@ -1,3 +1,8 @@
+## v1.1.1
+
+- Fix wordful line break bug (important).
+- Link English doc to root readme file.
+
 ## v1.1.0
 
 - Optimization for emoji spaces.
