@@ -1,15 +1,15 @@
 {
   "name": "markdown-it-wordless",
   "description": "A markdown-it plugin for wordless languages line-break.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://github.com/treeinfra/markdown-it-wordless",
   "author": {
     "name": "James Aprosail",
     "email": "aprosail@outlook.com",
     "url": "https://github.com/aprosail"
   },
-  "homepage": "https://github.com/treeinfra/markdown-it-wordless",
   "exports": {
     ".": {
       "require": "./index.cjs",
