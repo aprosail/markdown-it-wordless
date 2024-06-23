@@ -1,9 +1,10 @@
 ## v0.2.0
 
 - Add MIT License to node manifest.
-- GitHub Actions for check.
-- Readme manifest details.
+- GitHub Actions for check and dependabot.
 - Support all registered wordless languages by default.
+- Vitest to validate basic functions.
+- Readme manifest details.
 
 ## v0.1.0
 
