@@ -1,3 +1,10 @@
+## v1.1.0
+
+- Optimization for emoji spaces.
+- Optimization for Chinese and Japanese special punctuations.
+- VitePress documentation deployment.
+- Add npm topic tags.
+
 ## v1.0.0
 
 - Add MIT License to node manifest.
