@@ -23,7 +23,7 @@ jobs:
       - run: npm install
       - run: npm run doc.build
       - uses: actions/upload-pages-artifact@v3
-        with: {path: .vitepress/dist}
+        with: {path: docs/.vitepress/dist}
 
   deploy:
     environment:
