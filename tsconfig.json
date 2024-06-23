@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "types": ["vitest/importMeta"]
+  },
+  "include": ["index.ts"],
+  "exclude": ["node_modules", "*.js", "*.mjs"]
+}

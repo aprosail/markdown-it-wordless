@@ -1,6 +1,5 @@
 import md from "markdown-it"
 import MarkdownIt from "markdown-it/index.mjs"
-import {expect, test} from "vitest"
 
 import type {Options} from "./data"
 import {langIndexOf} from "./data"
@@ -34,8 +33,8 @@ export function wordless(md: md, options?: Options) {
   }
 }
 
-// @ts-ignore
 if (import.meta.vitest) {
+  const {expect, test} = import.meta.vitest
   test("basic function", function () {
     const raw = "English\nにほんご\n中文\n中文\nབོད་ཡིག།\nབོད་ཡིག།"
     expect(new MarkdownIt().use(wordless).render(raw)).toBe(

@@ -15,7 +15,7 @@ export default defineConfig([
       terser(),
     ],
     external(id) {
-      const prefixes = ["vitest", "markdown-it"]
+      const prefixes = ["markdown-it"]
       for (const prefix of prefixes) {
         if (id.startsWith(prefix)) return true
       }
