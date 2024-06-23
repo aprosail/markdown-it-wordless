@@ -10,17 +10,34 @@ export * from "./data"
 const space = " "
 
 /**
- * The default {@link Options} contains no wordless languages,
- * that you need to add required optimization manually.
- * Render wordless languages cost a lot,
- * it's recommended to only add required language ranges.
+ * A markdown-it plugin to optimize wordless multi-language line-break render.
+ * See [readme](./README.md) of this package for more details.
+ * Here's the minimal examples on how to use it:
  *
- * For example, if you are using Chinese or Japanese with English,
- * you may consider code like this:
  * ```ts
  * import md from "markdown-it"
  * import {wordless} from 'markdown-it-wordless'
  * md.use(wordless)
+ * ```
+ *
+ * ## For VitePress users
+ *
+ * If you are using [VitePress](https://vitepress.dev),
+ * you may config like this:
+ *
+ * ```ts
+ * // <root>/.vitepress/config.ts
+ * import {defineConfig} from "vitepress"
+ * import {wordless} from "markdown-it-wordless"
+ *
+ * export default defineConfig({
+ *   markdown: {
+ *     config(md) {
+ *       md.use(wordless)
+ *     },
+ *   },
+ *   // Other configs...
+ * })
  * ```
  */
 export function wordless(md: md, options?: Options) {

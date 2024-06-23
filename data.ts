@@ -8,10 +8,15 @@ export type Range = [number, number]
 export type LanguageRanges = NonEmptyArray<Range>
 
 /**
- * The default value is empty, you need to add it manually.
- * Parsing wordless languages costs a lot.
- * It's strongly recommended to only introduce the required series.
- * For example:
+ * The default value will enable all languages registered inside
+ * the {@link allWordless} const, and enable optimization for
+ * {@link commonWords} by default.
+ *
+ * If you'd like to customize the support languages to improve performance,
+ * you can config like the following example:
+ * The following example only enables wordless languages optimization
+ * for Chinese and Japanese, all other wordless languages will be omitted.
+ *
  * ```ts
  * import {wordless, chineseAndJapanese, Options} from 'markdown-it-wordless'
  * md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
