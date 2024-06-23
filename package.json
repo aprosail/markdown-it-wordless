@@ -25,11 +25,13 @@
     }
   },
   "scripts": {
-    "format.check": "prettier . --check",
-    "format": "prettier . --write",
     "build": "rollup --config rollup.config.js",
-    "review": "npm run format.check && npm test && npm run build",
+    "doc": "cd docs && npm run dev && cd ..",
+    "doc.build": "cd docs && npm run build && cd ..",
+    "format": "prettier . --write",
+    "format.check": "prettier . --check",
     "prepublishOnly": "npm run review",
+    "review": "npm run format.check && npm test && npm run build",
     "test": "vitest run"
   },
   "dependencies": {
