@@ -1,0 +1,14 @@
+{
+  "editor.unicodeHighlight.allowedLocales": {
+    "zh-hans": true,
+    "zh-hant": true,
+    "ja": true,
+    "ko": true,
+    "ja-kana": true,
+    "ja-kana-ext": true,
+    "ja-kana-ext-phonetic": true,
+    "ja-kana-ext-phonetic-ext": true,
+    "ja-kana-ext-phonetic-ext-compat": true,
+    "ja-kana-ext-phonetic-ext-compat-ext": true
+  }
+}
