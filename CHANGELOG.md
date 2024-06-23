@@ -1,8 +1,9 @@
-## v0.1.1
+## v0.2.0
 
 - Add MIT License to node manifest.
 - GitHub Actions for check.
 - Readme manifest details.
+- Support all registered wordless languages by default.
 
 ## v0.1.0
 

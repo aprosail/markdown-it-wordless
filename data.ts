@@ -30,46 +30,6 @@ export type Options = {
   supportWordless: LanguageRanges[]
 }
 
-/**
- * @param code unicode number of a character.
- * @param options {@link Options} for the wordless languages and
- * a series of non-wordless languages for optimization.
- * @returns Index of the character in the given wordless language series,
- * if there's not {@link Range} contains such code,
- * it means this is not a character of a wordless language,
- * and it will return -1. And if it's an emoji, it will return -2.
- */
-export function langIndexOf(code: number, options?: Options): number {
-  options = {
-    optimizeWords: options?.optimizeWords ?? [commonWords],
-    supportWordless: options?.supportWordless ?? [],
-  }
-
-  // Process optimizations.
-  for (const ranges of options!.optimizeWords!) {
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return -1
-    }
-  }
-
-  // Process Emoji.
-  for (const ranges of emoji) {
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return -2
-    }
-  }
-
-  // Process wordless language index.
-  const wordless = options!.supportWordless!
-  for (let index = 0; index < wordless.length; index++) {
-    const ranges = wordless[index]
-    for (const range of ranges) {
-      if (code >= range[0] && code <= range[1]) return index
-    }
-  }
-  return -1
-}
-
 /** Unicode from zero to 0x0dff, commonly used language with words. */
 export const commonWords: LanguageRanges = [[0x0000, 0x0dff]]
 
@@ -192,3 +152,63 @@ export const cuneiform: LanguageRanges = [
 
 /** Ancient Egyptian hieroglyphs. */
 export const hieroglyphics: LanguageRanges = [[0x13000, 0x1345f]]
+
+/** Enable optimization for all registered wordless languages. */
+export const allWordless: LanguageRanges[] = [
+  chineseAndJapanese,
+  tibetan,
+  thai,
+  lao,
+  cambodian,
+  burmese,
+  yi,
+  dehongDai,
+  xishuangbannaNewDai,
+  xishuangbannaOldDai,
+  jiangyongWomanScript,
+  oldChinesePinyin,
+  khitanSmallScript,
+  tangut,
+  cuneiform,
+  hieroglyphics,
+]
+
+/**
+ * @param code unicode number of a character.
+ * @param options {@link Options} for the wordless languages and
+ * a series of non-wordless languages for optimization.
+ * @returns Index of the character in the given wordless language series,
+ * if there's not {@link Range} contains such code,
+ * it means this is not a character of a wordless language,
+ * and it will return -1. And if it's an emoji, it will return -2.
+ */
+export function langIndexOf(code: number, options?: Options): number {
+  options = {
+    optimizeWords: options?.optimizeWords ?? [commonWords],
+    supportWordless: options?.supportWordless ?? allWordless,
+  }
+
+  // Process optimizations.
+  for (const ranges of options!.optimizeWords!) {
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return -1
+    }
+  }
+
+  // Process Emoji.
+  for (const ranges of emoji) {
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return -2
+    }
+  }
+
+  // Process wordless language index.
+  const wordless = options!.supportWordless!
+  for (let index = 0; index < wordless.length; index++) {
+    const ranges = wordless[index]
+    for (const range of ranges) {
+      if (code >= range[0] && code <= range[1]) return index
+    }
+  }
+  return -1
+}
