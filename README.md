@@ -14,6 +14,7 @@ which will disable all spaces when line break
 (render single `\n` into an empty string rather than a space):
 
 ```ts
+import md from "markdown-it"
 md.renderer.rules.softbreak = () => ""
 ```
 
@@ -25,6 +26,7 @@ So here comes this `"markdown-it-wordless"` plugin,
 and you can use it like this:
 
 ```ts
+import md from "markdown-it"
 import {Options} from "markdown-it-wordless"
 md.use(wordless)
 ```
