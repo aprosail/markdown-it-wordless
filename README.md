@@ -1,6 +1,7 @@
 # Markdown-it Wordless
 
-A markdown-it plugin to optimize wordless multi-language line-break render.
+A [markdown-it](https://markdown-it.github.io) plugin
+to optimize wordless multi-language line-break render.
 
 When a paragraph is long in markdown, we usually separate them into lines,
 and it will finally be rendered into a single line inside HTML.
