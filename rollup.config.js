@@ -4,8 +4,6 @@ import typescript from "@rollup/plugin-typescript"
 import {defineConfig} from "rollup"
 import dts from "rollup-plugin-dts"
 
-const external = ["vitest"]
-
 export default defineConfig([
   {
     plugins: [
@@ -16,7 +14,7 @@ export default defineConfig([
       }),
       terser(),
     ],
-    external,
+    external: ["vitest"],
     input: "index.ts",
     output: [
       {file: "index.js", format: "esm", sourcemap: true},
@@ -25,7 +23,6 @@ export default defineConfig([
   },
   {
     plugins: [dts({compilerOptions: {allowSyntheticDefaultImports: true}})],
-    external,
     input: "index.ts",
     output: {file: "index.d.ts", format: "esm"},
   },
