@@ -20,7 +20,7 @@ which will disable all spaces when line break
 
 ```ts
 import md from "markdown-it"
-md.renderer.rules.softbreak = () => ""
+md.renderer.rules.softbreak = () => "" // [!code focus]
 ```
 
 But once working with multi-languages,
@@ -33,7 +33,7 @@ and you can use it like this:
 ```ts
 import md from "markdown-it"
 import {Options} from "markdown-it-wordless"
-md.use(wordless)
+md.use(wordless) // [!code focus]
 ```
 
 ## Basic rules
@@ -62,7 +62,7 @@ import {wordless} from "markdown-it-wordless"
 export default defineConfig({
   markdown: {
     config(md) {
-      md.use(wordless)
+      md.use(wordless) // [!code focus]
     },
   },
   // Other configs...
@@ -85,7 +85,7 @@ if you will only use Chinese or Japanese as wordless languages:
 ```ts
 import md from "markdown-it"
 import {wordless, chineseAndJapanese, Options} from "markdown-it-wordless"
-md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]})
+md.use<Options>(wordless, {supportWordless: [chineseAndJapanese]}) // [!code focus]
 ```
 
 Such optimization is unnecessary in most cases,

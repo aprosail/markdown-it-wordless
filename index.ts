@@ -45,7 +45,7 @@ export function wordless(md: md, options?: Options) {
     const before = langIndexOf(prefix.charCodeAt(prefix.length - 1), options)
     const after = langIndexOf(suffix.charCodeAt(0), options)
 
-    if (before === after) return "" // Same wordless language.
+    if (before === after && before >= 0) return "" // Same wordless language.
     if (before === -3 || after === -3) return "" // Special punctuations.
     if ((before === -2 && after >= 0) || (after === -2 && before >= 0))
       return "" // Resolve emoji.
