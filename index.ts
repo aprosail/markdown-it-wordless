@@ -37,9 +37,9 @@ export function wordless(md: md, options?: Options) {
 // @ts-ignore
 if (import.meta.vitest) {
   test("basic function", function () {
-    const raw = "English\nにほんご\n中文\nབོད་ཡིག།"
+    const raw = "English\nにほんご\n中文\n中文\nབོད་ཡིག།\nབོད་ཡིག།"
     expect(new MarkdownIt().use(wordless).render(raw)).toBe(
-      "<p>English にほんご中文 བོད་ཡིག།</p>\n",
+      "<p>English にほんご中文中文 བོད་ཡིག།བོད་ཡིག།</p>\n",
     )
   })
 }
