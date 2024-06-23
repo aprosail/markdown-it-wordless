@@ -14,7 +14,13 @@ export default defineConfig([
       }),
       terser(),
     ],
-    external: ["vitest"],
+    external(id) {
+      const prefixes = ["vitest", "markdown-it"]
+      for (const prefix of prefixes) {
+        if (id.startsWith(prefix)) return true
+      }
+      return false
+    },
     input: "index.ts",
     output: [
       {file: "index.js", format: "esm", sourcemap: true},
