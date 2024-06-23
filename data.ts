@@ -77,7 +77,9 @@ export const chineseAndJapanese: LanguageRanges = [
   // [0x3040, 0x309f], // 日文平假名/平仮名ひらがな
   // [0x30a0, 0x30ff], // 日文片假名/片仮名カタカナ
   [0x3040, 0x30ff],
+  [0x3100, 0x312f], // 传统拼音注音符号(ㄆㄧㄣ ㄧㄣ)
   [0x3190, 0x319f], // 甲乙丙丁天地人...
+  [0x31a0, 0x31bf], // 传统拼音注音字母(ㄆㄧㄣ ㄧㄣ)
 
   // [0x31c0, 0x31ef], // 笔画/筆画
   // [0x31f0, 0x31ff], // 日文片假名扩展/片仮名カタカナの拡張
@@ -141,12 +143,6 @@ export const xishuangbannaOldDai: LanguageRanges = [[0x1a20, 0x1aaf]]
 /** 江永女书 */
 export const jiangyongWomanScript: LanguageRanges = [[0x1b170, 0x1b2ff]]
 
-/** 旧版拼音 */
-export const oldChinesePinyin: LanguageRanges = [
-  [0x3100, 0x312f],
-  [0x31a0, 0x31bf],
-]
-
 /** 契丹小字 */
 export const khitanSmallScript: LanguageRanges = [[0x18b00, 0x18cff]]
 
@@ -179,7 +175,6 @@ export const allWordless: LanguageRanges[] = [
   xishuangbannaNewDai,
   xishuangbannaOldDai,
   jiangyongWomanScript,
-  oldChinesePinyin,
   khitanSmallScript,
   tangut,
   cuneiform,
