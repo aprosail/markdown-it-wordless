@@ -22,6 +22,7 @@ docs/.vitepress/dist/
 .atom/
 .idea/
 .fleet/
+.vs/
 *.iml
 *.ipr
 *.iws
