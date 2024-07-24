@@ -20,6 +20,7 @@ vitest.config.ts
 .atom/
 .idea/
 .fleet/
+.vs/
 *.iml
 *.ipr
 *.iws
